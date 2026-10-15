@@ -2,15 +2,14 @@
 
 ## Run locally
 
-Install dependencies, then run the API and frontend in separate terminals:
+Install dependencies, then start the API and frontend together:
 
 ```sh
 npm install
-npm run server
 npm run dev
 ```
 
-The Vite development server proxies `/api` to the API on port `3001`. Open the URL printed by Vite. The API creates `server/data/schoolwork.sqlite` on first start; that file is ignored by Git and stores account credentials, sessions, and each user's schoolwork JSON.
+This starts the API and Vite frontend together. Open the URL printed by Vite. The frontend proxies `/api` to the API on port `3001`. The API creates `server/data/schoolwork.sqlite` on first start; that file is ignored by Git and stores account credentials, sessions, and each user's schoolwork JSON. You can also run just the API with `npm run server`.
 
 Create an account from the sign-in screen. Passwords must be at least 10 characters. Passwords are stored as per-account scrypt hashes; browser sessions use HTTP-only cookies. The app loads the signed-in user's data at login and saves changes to that user's server record automatically. The existing JSON file open/save actions remain available for importing and exporting.
 

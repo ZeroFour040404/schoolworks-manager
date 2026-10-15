@@ -1,15 +1,28 @@
 async function request(path, options = {}) {
-  const response = await fetch(path, {
-    credentials: "same-origin",
-    ...options,
-    headers: {
-      ...(options.body ? { "Content-Type": "application/json" } : {}),
-      ...options.headers,
-    },
-  });
+  let response;
+  try {
+    response = await fetch(path, {
+      credentials: "same-origin",
+      ...options,
+      headers: {
+        ...(options.body ? { "Content-Type": "application/json" } : {}),
+        ...options.headers,
+      },
+    });
+  } catch {
+    throw new Error("Cannot reach the API server. Start the app with `npm run dev` and try again.");
+  }
 
   if (response.status === 204) return null;
-  const result = await response.json();
+  if (!response.headers.get("content-type")?.includes("application/json")) {
+    throw new Error("The API returned a webpage instead of JSON. Restart with `npm run dev`.");
+  }
+  let result;
+  try {
+    result = await response.json();
+  } catch {
+    throw new Error("The API returned an invalid response. Check that the server is running and try again.");
+  }
   if (!response.ok) {
     throw new Error(result.error || "The request could not be completed.");
   }
