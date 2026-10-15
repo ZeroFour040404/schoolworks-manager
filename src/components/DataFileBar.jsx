@@ -10,15 +10,14 @@ export default function DataFileBar({
   hasUnsavedChanges,
   setHasUnsavedChanges,
   onStateLoaded,
+  accountSaveStatus,
 }) {
   const fileInputRef = useRef(null);
 
   // Status text
   let statusText;
   if (!currentDataFileName) {
-    statusText = hasUnsavedChanges
-      ? "No data file yet. Tap Save file so your changes aren't lost."
-      : "No data file open. Open one to load your tasks, or start fresh and save a new file.";
+    statusText = "No JSON data file open. Your account data is stored on the server.";
   } else {
     const saveNote = fileHandle
       ? "saves automatically"
@@ -80,6 +79,7 @@ export default function DataFileBar({
   return (
     <section className="data-file-bar" aria-label="Data file">
       <p className="data-file-status">{statusText}</p>
+      <p className="data-file-status" aria-live="polite">{accountSaveStatus}</p>
       <div className="data-file-buttons">
         <button className="secondary-button" id="open-data-file-button" onClick={handleOpen}>
           Open file

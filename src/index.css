@@ -98,3 +98,19 @@ details[open] summary { margin-bottom: 8px; }
   font-family: ui-monospace, Menlo, monospace; font-size: .9rem; overflow-x: auto; white-space: nowrap; }
 .folder-tree-text { margin: 0; overflow-x: auto; font-family: ui-monospace, Menlo, monospace; font-size: .85rem; line-height: 1.45; }
 .hint-text { color: var(--muted-color); margin: 8px 0 0; font-size: .9rem; }
+
+.app-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.header-user { display: flex; align-items: center; gap: 10px; }
+.header-email { overflow-wrap: anywhere; font-size: .9rem; }
+.header-logout-button { font: inherit; color: #fff; background: transparent; border: 1px solid #8290a5; border-radius: var(--corner-radius); min-height: 38px; padding: 4px 10px; cursor: pointer; }
+.header-error, .login-error { width: 100%; margin: 0; color: #b42332; font-size: .9rem; }
+.header-error { color: #ffd1d6; }
+.login-screen { display: grid; place-items: center; width: 100%; min-height: 100vh; padding: 20px; }
+.login-card { width: min(100%, 420px); padding: 24px; background: var(--sheet-color); border: 1px solid var(--rule-color); border-radius: var(--corner-radius); box-shadow: 0 8px 24px #1b2a4114; }
+.login-title { margin-bottom: 6px; }
+.login-subtitle { color: var(--muted-color); margin: 0 0 18px; }
+.login-form { display: grid; gap: 8px; }
+.login-form label { font-weight: 600; }
+.login-button { width: 100%; margin-top: 6px; }
+.login-button:disabled { opacity: .65; cursor: wait; }
+.login-switch { width: 100%; margin-top: 12px; min-height: 40px; color: var(--muted-color); background: transparent; border: 0; font: inherit; cursor: pointer; }
